@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.applet.*;
+import javax.swing.*;
 
 
 public class zaehlen extends Applet implements ActionListener {
@@ -26,20 +27,32 @@ public void init() {
 
 
 public void actionPerformed(ActionEvent e) {
+	
+	
 	if(e.getSource() == plus) {
 		if(Zahl.getText().equals("")){
 			count++;
-			ausgabe.setText("Ausgabe: " + count);
-			}else{
+			Zahl.setText(String.valueOf(count));
+		}else{
+			try{
+				count = Integer.parseInt(Zahl.getText()); //Setzt den Inhalt von (test) in den Integer (count) und wandelt diesen dabei in einen Integer um.
+				count++;
+				Zahl.setText(String.valueOf(count)); //Nimmt den Wert aus "count" und wandelt diesen in einen String um.
+			} catch(NumberFormatException d) {				
+				ausgabe.setText("Das geht net!");
+				Zahl.setText("");
 			}
-	if(e.getSource() == plus) {
-		int i;
-		i = Zahl.getText();
-	
+
+			
+			
+			
+		}
+		
+				 
 			
 		
-	}
-			}
+	
 		}
+	}
 }
 
